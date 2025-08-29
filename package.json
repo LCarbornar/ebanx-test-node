@@ -1,0 +1,26 @@
+{
+  "name": "ebanx-api-test",
+  "version": "1.0.0",
+  "description": "Simple account API",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LCarbornar/ebanx-test-node.git"
+  },
+  "author": "LCarbornar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LCarbornar/ebanx-test-node/issues"
+  },
+  "homepage": "https://github.com/LCarbornar/ebanx-test-node#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
