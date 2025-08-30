@@ -43,4 +43,27 @@ export default class AccountService {
 
         return this.account_repository.Save(account)
     }
+
+    Transfer(origin_account_id, destination_account_id, amount) {
+
+        const origin = this.account_repository.FindById(origin_account_id)
+        const destination = this.account_repository.FindById(destination_account_id)
+
+        if (origin === undefined || destination === undefined) {
+            throw new Error('Account not found')
+        }
+
+        if (origin.balance < amount) {
+            throw new Error('Insufficient funds')
+        }
+
+        origin.balance -= amount
+        destination.balance += amount
+
+        this.account_repository.Save(origin)
+        this.account_repository.Save(destination)
+
+        return { origin, destination }
+        
+    }
 }

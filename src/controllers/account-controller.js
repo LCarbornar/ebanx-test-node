@@ -39,6 +39,13 @@ export default class AccountController {
         const account = this.account_service.Withdraw(origin, amount)
 
         return res.status(201).json({ origin: account })
+      } else if(type === 'transfer') {
+
+        const { origin, destination, amount } = req.body
+        const result = this.account_service.Transfer(origin, destination, amount)
+
+        return res.status(201).json({ origin: result.origin, destination: result.destination })
+
       }
 
     } catch (error) {
