@@ -44,10 +44,16 @@ export default class AccountService {
     Transfer(origin_account_id, destination_account_id, amount) {
 
         const origin = this.account_repository.FindById(origin_account_id)
-        const destination = this.account_repository.FindById(destination_account_id)
 
-        if (origin === undefined || destination === undefined) {
+        if (origin === undefined) {
             throw new AccountNotFound()
+        }
+
+        let destination = this.account_repository.FindById(destination_account_id)
+
+        if (destination === undefined) {
+            destination = new Account(destination_account_id, 0)
+            this.account_repository.Save(destination)
         }
 
         origin.balance -= amount

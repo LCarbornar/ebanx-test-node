@@ -72,7 +72,6 @@ test('Should transfer funds between accounts', () => {
   const transfer_amount = 50
 
   account_service.Deposit(source_account_id, initial_balance)
-  account_service.Deposit(destination_account_id, 0)
 
   account_service.Transfer(source_account_id, destination_account_id, transfer_amount)
 
