@@ -14,8 +14,8 @@ export default class EventController {
 
             if (type === 'deposit') {
 
-                const { account_id, amount } = req.body
-                const account = this.account_service.Deposit(account_id, amount)
+                const { destination, amount } = req.body
+                const account = this.account_service.Deposit(destination, amount)
 
                 return res.status(201).json({ destination: account })
 
@@ -25,6 +25,7 @@ export default class EventController {
                 const account = this.account_service.Withdraw(origin, amount)
 
                 return res.status(201).json({ origin: account })
+                
             } else if(type === 'transfer') {
 
                 const { origin, destination, amount } = req.body
