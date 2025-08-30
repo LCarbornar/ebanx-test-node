@@ -94,3 +94,15 @@ test('Should return 404 if the account is not found when transferring funds', ()
   expect(() => account_service.Transfer(source_account_id, destination_account_id, transfer_amount)).toThrow('Account not found')
 
 })
+
+test('Should clear all accounts', () => {
+
+  account_service.Deposit('1234', 100)
+  account_service.Deposit('999', 0)
+
+  account_service.Clear()
+
+  expect(() => account_service.GetAccountBalance('1234')).toThrow('Account not found')
+  expect(() => account_service.GetAccountBalance('999')).toThrow('Account not found')
+
+})

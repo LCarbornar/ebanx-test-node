@@ -59,4 +59,8 @@ export default class AccountService {
         return { origin, destination }
         
     }
+
+    Clear() {
+        this.account_repository.Clear()
+    }
 }

@@ -19,4 +19,9 @@ export default class AccountController {
     }
   }
 
+  ClearAccounts(req, res, next) {
+    this.account_service.Clear()
+    return res.status(200).send("OK")
+  }
+
 }

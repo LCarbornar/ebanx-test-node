@@ -13,5 +13,6 @@ const router = express.Router()
 
 router.get('/balance', (req, res, next) => account_controller.GetAccountBalance(req, res, next))
 router.post('/event', (req, res, next) => event_controller.EventHandler(req, res, next))
+router.post('/reset', (req, res, next) => account_controller.ClearAccounts(req, res, next))
 
 export default router

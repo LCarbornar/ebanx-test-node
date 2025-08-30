@@ -22,5 +22,8 @@ export default class AccountRepository {
         
     }
 
+    Clear() {
+        this.#accounts.clear()
+    }
 
 }
