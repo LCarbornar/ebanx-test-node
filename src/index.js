@@ -3,10 +3,10 @@ import accountRoutes from './routes/account-routes.js'
 
 const app = express()
 
-app.use(accountRoutes)
-
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
+app.use(accountRoutes)
 
 const PORT = process.env.PORT || 3000
 
