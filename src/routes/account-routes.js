@@ -9,6 +9,7 @@ const account_controller = new AccountController(account_service)
 
 const router = express.Router()
 
-router.get('/balance', account_controller.GetAccountBalance)
+router.get('/balance', (req, res) => account_controller.GetAccountBalance(req, res))
+router.post('/event', (req, res) => account_controller.EventHandler(req, res))
 
 export default router

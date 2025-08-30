@@ -6,8 +6,21 @@ export default class AccountRepository {
         this.#accounts = new Map()
     }
 
-  GetBalance(account_id) {
-    return this.#accounts.get(account_id)?.balance
-  }
-  
+    FindById(account_id) {
+        return this.#accounts.get(account_id)
+    }
+
+    GetBalance(account_id) {
+        let account = this.#accounts.get(account_id)
+        return account?.balance
+    }
+
+    Save(account) {
+
+        this.#accounts.set(account.id, account)
+        return account
+        
+    }
+
+
 }
