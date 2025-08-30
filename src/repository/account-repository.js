@@ -1,10 +1,13 @@
-class AccountRepository {
+export default class AccountRepository {
 
-    #accounts = new Map()
+    #accounts
 
-    GetBalance(account_id) {
-        return this.#accounts.get(account_id)?.balance
+    constructor() {
+        this.#accounts = new Map()
     }
-}
 
-export default new AccountRepository()
+  GetBalance(account_id) {
+    return this.#accounts.get(account_id)?.balance
+  }
+  
+}
