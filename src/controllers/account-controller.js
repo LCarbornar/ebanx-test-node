@@ -4,7 +4,7 @@ export default class AccountController {
     this.account_service = account_service  
   }
 
-  GetAccountBalance(req, res) {
+  GetAccountBalance(req, res, next) {
 
     try {
 
@@ -15,8 +15,7 @@ export default class AccountController {
       return res.status(200).json(account_balance)
 
     } catch (error) {
-      // TODO - refactor to use a exception handler middleware
-      res.status(400).json(0)
+      next(error)
     }
   }
 

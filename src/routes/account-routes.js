@@ -11,7 +11,7 @@ const event_controller = new EventController(account_service)
 
 const router = express.Router()
 
-router.get('/balance', (req, res) => account_controller.GetAccountBalance(req, res))
-router.post('/event', (req, res) => event_controller.EventHandler(req, res))
+router.get('/balance', (req, res, next) => account_controller.GetAccountBalance(req, res, next))
+router.post('/event', (req, res, next) => event_controller.EventHandler(req, res, next))
 
 export default router

@@ -1,4 +1,5 @@
 import Account from '../models/account.js'
+import AccountNotFound from "../erros/account-not-found.js"
 export default class AccountService {
 
     constructor(account_repository) {
@@ -9,7 +10,7 @@ export default class AccountService {
 
         const balance = this.account_repository.GetBalance(account_id)
 
-        if (balance === undefined) throw new Error('Account not found')
+        if (balance === undefined) throw new AccountNotFound(account_id)
         return balance
 
     }
@@ -32,11 +33,7 @@ export default class AccountService {
         let account = this.account_repository.FindById(account_id)
 
         if (account === undefined) {
-            throw new Error('Account not found')
-        }
-
-        if (account.balance < amount) {
-            throw new Error('Insufficient funds')
+            throw new AccountNotFound()
         }
 
         account.balance -= amount
@@ -50,11 +47,7 @@ export default class AccountService {
         const destination = this.account_repository.FindById(destination_account_id)
 
         if (origin === undefined || destination === undefined) {
-            throw new Error('Account not found')
-        }
-
-        if (origin.balance < amount) {
-            throw new Error('Insufficient funds')
+            throw new AccountNotFound()
         }
 
         origin.balance -= amount

@@ -1,10 +1,12 @@
+import InvalidEventError from "../erros/invalid-event-error.js"
+
 export default class EventController {
 
     constructor(account_service) {
         this.account_service = account_service
     }
 
-    EventHandler(req, res) {
+    EventHandler(req, res, next) {
     
         try {
 
@@ -32,10 +34,10 @@ export default class EventController {
 
             }
 
-            return res.status(400).json({ error: 'Invalid event type' })
+           throw new InvalidEventError(type)
 
         } catch (error) {
-            res.status(400).json({ error: error.message })
+            next(error)
         }
 
     }
